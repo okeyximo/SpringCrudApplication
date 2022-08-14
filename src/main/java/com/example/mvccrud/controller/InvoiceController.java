@@ -60,6 +60,16 @@ public class InvoiceController {
         }
         return page;
     }
+    @PostMapping("/update")
+    public String updateInvoice(
+            @ModelAttribute Invoice invoice,
+            RedirectAttributes attributes
+    ) {
+        service.updateInvoice(invoice);
+        Long id = invoice.getId();
+        attributes.addAttribute("message", "Invoice with id: '"+id+"' is updated successfully !");
+        return "redirect:getAllInvoices";
+    }
     @GetMapping("/delete")
     public String deleteInvoice(@RequestParam Long id, RedirectAttributes attributes){
         try{

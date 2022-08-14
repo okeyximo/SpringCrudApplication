@@ -28,7 +28,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
     @Override
     public Invoice getInvoiceById(Long id) {
         Optional<Invoice> opt = repo.findById(id);
-        if (opt.isEmpty()){
+        if (opt.isPresent()){
             return opt.get();
         }
         else{
